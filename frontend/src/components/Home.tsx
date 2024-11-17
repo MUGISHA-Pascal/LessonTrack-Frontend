@@ -24,48 +24,72 @@ const Home = () => {
               <MdSpaceDashboard />
               <p className="text-[14px]">Dashboard</p>
             </Link>
-            <div className="flex flex-row hover:cursor-pointer space-x-[10px] items-center">
+            <Link
+              to="/inbox"
+              className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
+            >
               <AiFillMessage />
               <p className="text-[14px]">Inbox</p>
-            </div>
+            </Link>
           </div>
         </div>
         <div className="flex flex-col space-y-[20px] w-full">
           <h2 className="text-[11px] w-[140px]">WorkSpace</h2>
           <div className="flex flex-col space-y-[20px] items-left pl-[70px]  w-full">
-            <div className="flex flex-row hover:cursor-pointer space-x-[10px] items-center">
+            <Link
+              to="/courses"
+              className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
+            >
               <FaDiscourse />
               <p className="text-[14px]">Courses</p>
-            </div>
-            <div className="flex flex-row hover:cursor-pointer space-x-[10px] items-center">
+            </Link>
+            <Link
+              to="/quiz"
+              className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
+            >
               <MdQuiz />
               <p className="text-[14px]">Quiz</p>
-            </div>
-            <div className="flex flex-row hover:cursor-pointer space-x-[10px] items-center">
+            </Link>
+            <Link
+              to="/feedback"
+              className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
+            >
               <MdFeedback />
               <p className="text-[14px]">Feedback</p>
-            </div>
-            <div className="flex flex-row hover:cursor-pointer space-x-[10px] items-center">
+            </Link>
+            <Link
+              to="/lesson"
+              className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
+            >
               <FaLightbulb />
               <p className="text-[14px]">Lesson</p>
-            </div>
-            <div className="flex flex-row hover:cursor-pointer space-x-[10px] items-center">
+            </Link>
+            <Link
+              to="/questions"
+              className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
+            >
               <BsFillQuestionSquareFill />
               <p className="text-[14px]">Questions</p>
-            </div>
-            <div className="flex flex-row hover:cursor-pointer space-x-[10px] items-center">
+            </Link>
+            <Link
+              to="/certificates"
+              className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
+            >
               <PiCertificateFill />
               <p className="text-[14px]">Certificates</p>
-            </div>
+            </Link>
           </div>
         </div>
         <div className="flex flex-col  space-y-[20px]  w-full">
           <h2 className="text-[11px] w-[160px]">Account Settings</h2>
           <div className="flex flex-col space-y-[20px] items-left pl-[70px]  w-full">
-            <div className="flex flex-row hover:cursor-pointer space-x-[10px] items-center">
+            <Link
+              to="/profile"
+              className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
+            >
               <FaUserEdit />
               <p className="text-[14px]">Edit Profile</p>
-            </div>
+            </Link>
           </div>
         </div>
       </menu>

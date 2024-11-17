@@ -1,51 +1,23 @@
 import React, { useEffect, useRef } from "react";
 import { IoPieChartOutline } from "react-icons/io5";
 import { MdOutlineCrisisAlert } from "react-icons/md";
-import {
-  Chart,
-  LineController,
-  CategoryScale,
-  BarElement,
-  LinearScale,
-  DoughnutController,
-  PointElement,
-  ArcElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  ChartTypeRegistry,
-} from "chart.js";
+import { Chart, registerables } from "chart.js";
 
-Chart.register(
-  LineController,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  DoughnutController,
-  ArcElement,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+Chart.register(...registerables);
 
 const Dashboard = () => {
   const chartRef = useRef<Chart | null>(null);
   const donutRef = useRef<Chart<"doughnut"> | null>(null);
   useEffect(() => {
-    const LineChartCanvas = document.getElementById(
-      "LineChart"
-    ) as HTMLCanvasElement;
+    const BarChartCanvas = document.getElementById("bar") as HTMLCanvasElement;
 
-    if (LineChartCanvas) {
+    if (BarChartCanvas) {
       if (chartRef.current) {
         chartRef.current.destroy();
       }
 
-      chartRef.current = new Chart(LineChartCanvas, {
-        type: "line",
+      chartRef.current = new Chart(BarChartCanvas, {
+        type: "bar", // Change chart type to bar
         data: {
           labels: [
             "Jan",
@@ -65,22 +37,16 @@ const Dashboard = () => {
             {
               label: "Reach",
               data: [50, 80, 60, 100, 75, 120, 185, 110, 90, 140, 180, 160],
-              borderColor: "#FF9500",
-              backgroundColor: "rgba(255, 149, 0, 0.2)",
-              borderWidth: 2,
-              pointBackgroundColor: "#FF9500",
-              pointRadius: 4,
-              fill: true,
+              backgroundColor: "#1E90FF", // Color for the bars
+              borderColor: "#1E90FF", // Border color for the bars
+              borderWidth: 1,
             },
             {
               label: "Paid Reach",
               data: [30, 50, 55, 70, 65, 110, 133, 100, 80, 120, 150, 140],
-              borderColor: "#2AC49B",
-              backgroundColor: "rgba(42, 196, 155, 0.2)",
-              borderWidth: 2,
-              pointBackgroundColor: "#2AC49B",
-              pointRadius: 4,
-              fill: true,
+              backgroundColor: "#4169E1", // Color for the bars
+              borderColor: "#4169E1", // Border color for the bars
+              borderWidth: 1,
             },
           ],
         },
@@ -118,11 +84,11 @@ const Dashboard = () => {
               title: {
                 display: true,
                 text: "Month",
-                color: "#CCD2E3",
+                color: "#374151",
                 font: { weight: "normal" },
               },
               ticks: {
-                color: "#CCD2E3",
+                color: "#374151",
               },
               grid: {
                 display: false,
@@ -132,11 +98,11 @@ const Dashboard = () => {
               title: {
                 display: true,
                 text: "Reach (K)",
-                color: "#CCD2E3",
+                color: "#374151",
                 font: { weight: "normal" },
               },
               ticks: {
-                color: "#CCD2E3",
+                color: "#374151",
                 stepSize: 40,
                 padding: 10,
                 callback: (value) => `${value}K`,
@@ -149,6 +115,7 @@ const Dashboard = () => {
         },
       });
     }
+
     const DonutChart = document.getElementById(
       "DonutChart"
     ) as HTMLCanvasElement;
