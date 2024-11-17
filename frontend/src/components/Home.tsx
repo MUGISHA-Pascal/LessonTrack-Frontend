@@ -8,6 +8,7 @@ import { FaLightbulb } from "react-icons/fa";
 import { BsFillQuestionSquareFill } from "react-icons/bs";
 import { PiCertificateFill } from "react-icons/pi";
 import { FaUserEdit } from "react-icons/fa";
+import { Link, Outlet } from "react-router-dom";
 const Home = () => {
   return (
     <div className="flex flex-row h-screen w-full">
@@ -15,10 +16,13 @@ const Home = () => {
         <div className="flex flex-col space-y-[20px] items-left w-full">
           <h2 className="text-[11px] w-[140px]">Main Menu</h2>
           <div className="flex flex-col space-y-[20px] items-left pl-[70px] w-full">
-            <div className="flex flex-row hover:cursor-pointer space-x-[10px] items-center">
+            <Link
+              to="/"
+              className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
+            >
               <MdSpaceDashboard />
               <p className="text-[14px]">Dashboard</p>
-            </div>
+            </Link>
             <div className="flex flex-row hover:cursor-pointer space-x-[10px] items-center">
               <AiFillMessage />
               <p className="text-[14px]">Inbox</p>
@@ -64,7 +68,9 @@ const Home = () => {
           </div>
         </div>
       </menu>
-      <main></main>
+      <main className="flex-1 px-[5px]">
+        <Outlet />
+      </main>
     </div>
   );
 };

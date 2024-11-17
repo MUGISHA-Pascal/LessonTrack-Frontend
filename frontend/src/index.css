@@ -9,6 +9,42 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+body::-webkit-scrollbar {
+  width: 6px;
+  margin-right: 10px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #e5e7eb;
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+.dashDiv::-webkit-scrollbar {
+  width: 6px;
+  margin-right: 10px;
+}
+.dashDiv::-webkit-scrollbar-thumb {
+  background-color: #e5e7eb;
+  border-radius: 10px;
+}
+.dashDiv::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+
+.scrollableDiv::-webkit-scrollbar {
+  width: 6px;
+  margin-right: 10px;
+}
+
+.scrollableDiv::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.scrollableDiv::-webkit-scrollbar-track {
+  background-color: #e5e7eb;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
