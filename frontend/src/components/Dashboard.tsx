@@ -32,6 +32,170 @@ Chart.register(
 );
 
 const Dashboard = () => {
+  const chartRef = useRef<Chart | null>(null);
+  const donutRef = useRef<Chart<"doughnut"> | null>(null);
+  useEffect(() => {
+    const LineChartCanvas = document.getElementById(
+      "LineChart"
+    ) as HTMLCanvasElement;
+
+    if (LineChartCanvas) {
+      if (chartRef.current) {
+        chartRef.current.destroy();
+      }
+
+      chartRef.current = new Chart(LineChartCanvas, {
+        type: "line",
+        data: {
+          labels: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          datasets: [
+            {
+              label: "Reach",
+              data: [50, 80, 60, 100, 75, 120, 185, 110, 90, 140, 180, 160],
+              borderColor: "#FF9500",
+              backgroundColor: "rgba(255, 149, 0, 0.2)",
+              borderWidth: 2,
+              pointBackgroundColor: "#FF9500",
+              pointRadius: 4,
+              fill: true,
+            },
+            {
+              label: "Paid Reach",
+              data: [30, 50, 55, 70, 65, 110, 133, 100, 80, 120, 150, 140],
+              borderColor: "#2AC49B",
+              backgroundColor: "rgba(42, 196, 155, 0.2)",
+              borderWidth: 2,
+              pointBackgroundColor: "#2AC49B",
+              pointRadius: 4,
+              fill: true,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            title: {
+              display: false,
+            },
+            tooltip: {
+              enabled: true,
+              backgroundColor: "#2AC49B",
+              titleColor: "#FFFFFF",
+              bodyColor: "#FFFFFF",
+              displayColors: true,
+              borderColor: "#2AC49B",
+              borderWidth: 1,
+              callbacks: {
+                label: function (tooltipItem) {
+                  return `${tooltipItem.dataset.label}: ${tooltipItem.raw}K`;
+                },
+              },
+            },
+            legend: {
+              display: true,
+              labels: {
+                color: "#FFFFFF",
+                usePointStyle: true,
+              },
+            },
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: "Month",
+                color: "#CCD2E3",
+                font: { weight: "normal" },
+              },
+              ticks: {
+                color: "#CCD2E3",
+              },
+              grid: {
+                display: false,
+              },
+            },
+            y: {
+              title: {
+                display: true,
+                text: "Reach (K)",
+                color: "#CCD2E3",
+                font: { weight: "normal" },
+              },
+              ticks: {
+                color: "#CCD2E3",
+                stepSize: 40,
+                padding: 10,
+                callback: (value) => `${value}K`,
+              },
+              grid: {
+                color: "#FFFFFF33",
+              },
+            },
+          },
+        },
+      });
+    }
+    const DonutChart = document.getElementById(
+      "DonutChart"
+    ) as HTMLCanvasElement;
+    if (donutRef.current) {
+      donutRef.current.destroy();
+    }
+    donutRef.current = new Chart<"doughnut">(DonutChart, {
+      type: "doughnut",
+      data: {
+        labels: ["Tanzania", "Rwanda", "Uganda", "Kenya", "Burundi"],
+        datasets: [
+          {
+            data: [21, 64, 18, 5, 5],
+            backgroundColor: [
+              "#87CEEB",
+              "#1E90FF",
+              "#4169E1",
+              "#0000CD",
+              "#00008B",
+            ],
+            borderColor: "#FFFFFF",
+            borderWidth: 2,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: "70%",
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: (context) => `${context.label}: ${context.raw}K`,
+            },
+          },
+          legend: {
+            display: false,
+          },
+        },
+      },
+    });
+    return () => {
+      if (chartRef.current) {
+        chartRef.current.destroy();
+      }
+    };
+  }, []);
   return (
     <div className="dashDiv flex-1 h-screen overflow-y-auto pb-[50px] bg-[#ffffff] max-md:p-0">
       <div className="shadow-custom bg-white p-[10px] max-md:p-[0px] h-[320px] max-md:h-[250px] max-md:w-[350px] rounded-[10px] w-[950px] mt-[20px] ml-[20px] relative">
@@ -48,14 +212,79 @@ const Dashboard = () => {
             </h2>
           </div>
           <div className=" p-[4px]  max-md:pt-[20px] px-[20px] w-full flex flex-row max-md:flex-col md:space-x-[90px] max-md:space-y-[10px] items-center justify-center">
-            <div className="w-[195px] h-[195px] max-md:w-[150px] max-md:h-[150px]">
+            <div className="relative w-[195px] h-[195px] max-md:w-[150px] max-md:h-[150px]">
               <canvas id="DonutChart"></canvas>
+              <p className="absolute top-[80px] max-md:text-[12px] max-md:top-[600px] max-md:left-[145px] left-[60px] text-gray-700 font-bold">
+                Countries
+              </p>
             </div>
 
             <div className="ml-10 max-md:ml-[5px] px-[20px] py-[5px] text-[10px] rounded-[10px] flex flex-col space-y-[7px] bg-gray-200 max-md:w-[350px] w-[400px] text-gray-700">
               <h3 className="text-[13px] font-semibold max-md:text-[10px]">
                 Audience by Country
               </h3>
+              <ul className="flex flex-col space-y-[9px]">
+                <li className="flex flex-row space-x-[70px] max-md:space-x-[150px] items-center my-1">
+                  <div className="flex flex-row space-x-[15px] items-center">
+                    <span className="w-2 h-2 bg-[#87CEEB] rounded-full mr-2"></span>
+                    <p>Tanzania</p>
+                  </div>
+                  <div className="flex flex-row space-x-[35px] items-center">
+                    <span>21K</span>{" "}
+                    <div className="text-blue-500 w-[25px] flex flex-row items-center justify-center h-[25px] p-[4px] font-bold bg-[#E6F2FE] rounded-full">
+                      <span className="ml-auto ">27%</span>
+                    </div>
+                  </div>
+                </li>
+                <li className="flex flex-row space-x-[70px] max-md:space-x-[150px] items-center my-1">
+                  <div className="flex flex-row space-x-[15px] items-center">
+                    <span className="w-2 h-2 bg-[#1E90FF] rounded-full mr-2"></span>
+                    <p>Rwanda</p>
+                  </div>{" "}
+                  <div className="flex flex-row space-x-[35px] items-center">
+                    <span>64K</span>
+                    <div className="text-blue-500 w-[25px] flex flex-row items-center justify-center h-[25px] p-[4px] font-bold bg-[#E6F2FE] rounded-full">
+                      <span className="ml-auto">40%</span>
+                    </div>
+                  </div>
+                </li>
+                <li className="flex flex-row space-x-[73px] max-md:space-x-[153px] items-center my-1">
+                  <div className="flex flex-row space-x-[15px] items-center">
+                    <span className="w-2 h-2 bg-[#4169E1] rounded-full mr-2"></span>
+                    <p>Uganda</p>
+                  </div>{" "}
+                  <div className="flex flex-row space-x-[35px] items-center">
+                    <span>18K</span>
+                    <div className="text-blue-500 w-[25px] flex flex-row items-center justify-center h-[25px] p-[4px] font-bold bg-[#E6F2FE] rounded-full">
+                      <span className="ml-auto">16%</span>
+                    </div>
+                  </div>
+                </li>
+                <li className="flex flex-row space-x-[85px] max-md:space-x-[165px] items-center my-1">
+                  <div className="flex flex-row space-x-[15px] items-center">
+                    <span className="w-2 h-2 bg-[#0000CD] rounded-full mr-2"></span>
+                    <p>Kenya</p>
+                  </div>{" "}
+                  <div className="flex flex-row space-x-[35px] items-center">
+                    <span>5K</span>
+                    <div className="text-blue-500 w-[25px] flex flex-row items-center justify-center h-[25px] p-[4px] font-bold bg-[#E6F2FE] rounded-full">
+                      <span className="ml-auto">8%</span>
+                    </div>
+                  </div>
+                </li>
+                <li className="flex flex-row space-x-[77px] max-md:space-x-[157px] items-center my-1">
+                  <div className="flex flex-row space-x-[15px] items-center">
+                    <span className="w-2 h-2 bg-[#00008B] rounded-full mr-2"></span>
+                    <p>Burundi</p>
+                  </div>
+                  <div className="flex flex-row space-x-[35px] items-center">
+                    <span>5K</span>
+                    <div className="text-blue-500 w-[25px] flex flex-row items-center justify-center h-[25px] p-[4px] font-bold bg-[#E6F2FE] rounded-full">
+                      <span className="ml-auto">8%</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

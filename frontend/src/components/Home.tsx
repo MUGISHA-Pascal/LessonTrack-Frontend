@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { MdSpaceDashboard } from "react-icons/md";
 import { FaDiscourse } from "react-icons/fa";
 import { AiFillMessage } from "react-icons/ai";
@@ -9,6 +9,7 @@ import { BsFillQuestionSquareFill } from "react-icons/bs";
 import { PiCertificateFill } from "react-icons/pi";
 import { FaUserEdit } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
+
 const Home = () => {
   return (
     <div className="flex flex-row h-screen w-full">
