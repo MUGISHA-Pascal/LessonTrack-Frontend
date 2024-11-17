@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -11,7 +10,7 @@ const Signup = () => {
       <main className="flex items-center justify-center min-h-screen">
         <section className="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
           <h1 className="text-2xl font-semibold text-center text-gray-700 mb-6">
-            Signup for Connectify
+            Signup
           </h1>
 
           <form
@@ -105,7 +104,7 @@ const Signup = () => {
             </button>
           </form>
 
-          <div className="text-center mt-4">
+          <div className="text-center text-[14px] mt-4">
             <p className="text-gray-600">
               Already have an account?
               <a
