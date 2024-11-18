@@ -26,6 +26,7 @@ const Inbox: React.FC<childProps> = ({ users }) => {
             <div className="messageDiv  h-[340px] grid grid-cols-1 gap-[10px] px-[5px] py-[10px] overflow-y-auto">
               {users.map((user) => (
                 <Link
+                  key={user.id}
                   to={`/inbox/conversation/${user.id}`}
                   className="shadow-sm w-[390px] border-gray-300 border-[1px] h-[70px] rounded-[10px] flex flex-row space-x-[20px] items-center justify-start pl-[10px]"
                 >
