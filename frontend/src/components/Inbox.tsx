@@ -1,31 +1,10 @@
 import React from "react";
 import { IoSearch } from "react-icons/io5";
-import profileImage from "../assets/profile.png";
-import { Outlet } from "react-router-dom";
-
-const Inbox = () => {
-  const users = [
-    {
-      name: "mugisha",
-      message: "hello brother how are you doing",
-      image: profileImage,
-    },
-    {
-      name: "pascal",
-      message: "the business was greatw tho",
-      image: profileImage,
-    },
-    {
-      name: "anastase",
-      message: "hahah find me i will give you more",
-      image: profileImage,
-    },
-    { name: "john doe", message: "never give up brother", image: profileImage },
-    { name: "john max", message: "never give up brother", image: profileImage },
-    { name: "anastase", message: "never give up brother", image: profileImage },
-    { name: "john doe", message: "right dude", image: profileImage },
-    { name: "john max", message: "never give up brother", image: profileImage },
-  ];
+import { Link, Outlet } from "react-router-dom";
+interface childProps {
+  users: { id: number; name: string; image: string; message: string }[];
+}
+const Inbox: React.FC<childProps> = ({ users }) => {
   return (
     <main className="flex flex-col">
       <header className="flex items-center h-[60px] pl-[20px] border-b-[1px] border-gray-300">
@@ -44,9 +23,12 @@ const Inbox = () => {
             </div>
           </div>
           <div className="border-[1px] w-[420px] border-gray-300 mt-[30px] p-[5px] rounded-[10px]">
-            <div className="messageDiv  h-[400px] grid grid-cols-1 gap-[10px] px-[5px] py-[10px] overflow-y-auto">
+            <div className="messageDiv  h-[340px] grid grid-cols-1 gap-[10px] px-[5px] py-[10px] overflow-y-auto">
               {users.map((user) => (
-                <div className="shadow-sm w-[390px] border-gray-300 border-[1px] h-[70px] rounded-[10px] flex flex-row space-x-[20px] items-center justify-start pl-[10px]">
+                <Link
+                  to={`/inbox/conversation/${user.id}`}
+                  className="shadow-sm w-[390px] border-gray-300 border-[1px] h-[70px] rounded-[10px] flex flex-row space-x-[20px] items-center justify-start pl-[10px]"
+                >
                   <div className="h-[50px] flex flex-col justify-start space-y-[10px]">
                     <div className="flex flex-row items-start space-x-[10px]">
                       <img
@@ -63,7 +45,7 @@ const Inbox = () => {
                   <div className="messageDiv flex items-start h-[40px]  overflow-auto">
                     <p className="text-[10px] text-gray-500">{user.message}</p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
