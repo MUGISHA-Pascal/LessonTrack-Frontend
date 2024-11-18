@@ -28,7 +28,7 @@ const Inbox: React.FC<childProps> = ({ users }) => {
                 <Link
                   key={user.id}
                   to={`/inbox/conversation/${user.id}`}
-                  className="shadow-sm w-[390px] border-gray-300 border-[1px] h-[70px] rounded-[10px] flex flex-row space-x-[20px] items-center justify-start pl-[10px]"
+                  className="shadow w-[390px] border-gray-300 border-[1px] h-[70px] rounded-[10px] flex flex-row space-x-[20px] items-center justify-start pl-[10px]"
                 >
                   <div className="h-[50px] flex flex-col justify-start space-y-[10px]">
                     <div className="flex flex-row items-start space-x-[10px]">
