@@ -59,11 +59,11 @@ const Dashboard = () => {
             },
             tooltip: {
               enabled: true,
-              backgroundColor: "#2AC49B",
+              backgroundColor: "#4169E1",
               titleColor: "#FFFFFF",
               bodyColor: "#FFFFFF",
               displayColors: true,
-              borderColor: "#2AC49B",
+              borderColor: "#4169E1",
               borderWidth: 1,
               callbacks: {
                 label: function (tooltipItem) {
@@ -74,7 +74,7 @@ const Dashboard = () => {
             legend: {
               display: true,
               labels: {
-                color: "#FFFFFF",
+                color: "#374151",
                 usePointStyle: true,
               },
             },
