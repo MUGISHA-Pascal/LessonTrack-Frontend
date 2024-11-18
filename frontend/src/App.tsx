@@ -17,14 +17,16 @@ import Certificates from "./components/Certificates";
 import Profile from "./components/Profile";
 import Conversation from "./components/Conversation";
 import profileImage from "./assets/profile.png";
-
+import myImage from "./assets/me.jpg";
+import friendImage from "./assets/friend.jpg";
+import Waiting from "./components/Waiting";
 function App() {
   const users = [
     {
       id: 1,
       name: "mugisha",
       message: "hello brother how are you doing",
-      image: profileImage,
+      image: myImage,
     },
     {
       id: 2,
@@ -35,8 +37,8 @@ function App() {
     {
       id: 3,
       name: "anastase",
-      message: "hahah find me i will give you more",
-      image: profileImage,
+      message: "hahah find me i will give you more money tho",
+      image: friendImage,
     },
     {
       id: 4,
@@ -72,6 +74,7 @@ function App() {
           <Route path="/" element={<Home />}>
             <Route path="" element={<Dashboard />} />
             <Route path="/inbox" element={<Inbox users={users} />}>
+              <Route path="" element={<Waiting />} />
               <Route
                 path="conversation/:id"
                 element={<Conversation users={users} />}

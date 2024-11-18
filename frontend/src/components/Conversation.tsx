@@ -22,7 +22,7 @@ const Conversation: React.FC<childProps> = ({ users }) => {
           </h2>
         </div>
       </head>
-      <main className="flex-1 mt-[50px] p-[10px] overflow-y-auto">
+      <main className="messageDiv flex-1 mt-[50px] p-[10px] overflow-y-auto">
         <div className="float-left flex flex-col items-start space-y-[10px] space-x-[10px]">
           <div className=" flex items-start flex-col bg-blue-500 p-[10px] rounded-tr-[10px] rounded-bl-[10px] text-white">
             <p className="text-[12px]">{users[numberId].message}</p>
