@@ -6,15 +6,6 @@ const Courses = () => {
   const courses = [
     {
       id: 1,
-      title: "Master Design System In Figma",
-      CreatedAt: "02/03/2024",
-      duration: "20h 10m",
-      price: "$150",
-      level: "basic",
-      image: figmaImage,
-    },
-    {
-      id: 2,
       title: "Super Creative Background Creation",
       CreatedAt: "02/04/2024",
       duration: "20h 10m",
@@ -23,13 +14,22 @@ const Courses = () => {
       image: backgroundImage,
     },
     {
-      id: 3,
+      id: 2,
       title: "How to master html and css",
       CreatedAt: "02/03/2024",
       duration: "20h 10m",
       price: "$150",
       level: "basic",
       image: htmlImage,
+    },
+    {
+      id: 3,
+      title: "Master Design System In Figma",
+      CreatedAt: "02/03/2024",
+      duration: "20h 10m",
+      price: "$150",
+      level: "basic",
+      image: figmaImage,
     },
   ];
   return (
@@ -58,7 +58,7 @@ const Courses = () => {
           <tbody>
             {courses.map((course) => (
               <tr key={course.id} className="border-gray-300 border-[1px]">
-                <td className="flex flex-row p-[20px] space-x-[40px]">
+                <td className="flex hover:cursor-pointer flex-row p-[20px] space-x-[40px]">
                   <img
                     src={course.image}
                     alt="course image"

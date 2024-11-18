@@ -9,6 +9,7 @@ import { BsFillQuestionSquareFill } from "react-icons/bs";
 import { PiCertificateFill } from "react-icons/pi";
 import { FaUserEdit } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
+import { IoEnter } from "react-icons/io5";
 
 const Home = () => {
   return (
@@ -89,6 +90,13 @@ const Home = () => {
             >
               <FaUserEdit />
               <p className="text-[14px]">Edit Profile</p>
+            </Link>
+            <Link
+              to="/auth/signup"
+              className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
+            >
+              <IoEnter />
+              <p className="text-[14px]">Signup</p>
             </Link>
           </div>
         </div>
