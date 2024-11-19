@@ -101,7 +101,7 @@ const Home = () => {
           </div>
         </div>
       </menu>
-      <main className="flex-1 px-[5px]">
+      <main className="relative flex-1">
         <Outlet />
       </main>
     </div>
