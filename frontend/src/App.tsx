@@ -20,6 +20,9 @@ import profileImage from "./assets/profile.png";
 import myImage from "./assets/me.jpg";
 import friendImage from "./assets/friend.jpg";
 import Waiting from "./components/Waiting";
+import QuizWaiting from "./components/QuizWaiting";
+import quizImage from "./assets/quiz.png";
+import QuizQuestions from "./components/QuizQuestions";
 function App() {
   const users = [
     {
@@ -66,6 +69,58 @@ function App() {
       image: profileImage,
     },
   ];
+  const quizes = [
+    {
+      id: 1,
+      title: "Mastering UI Design for Impactful Solutions",
+      questions: "10",
+      image: quizImage,
+      date: "02/03/2024",
+    },
+    {
+      id: 2,
+      title: "A symphony of colors in UI Design",
+      questions: "15",
+      image: quizImage,
+      date: "02/03/2024",
+    },
+    {
+      id: 3,
+      title: "Bridging Users and UI in Design Harmony",
+      questions: "25",
+      image: quizImage,
+      date: "02/03/2024",
+    },
+    {
+      id: 4,
+      title: "Mastering UI Design for Impactful Solutions",
+      questions: "10",
+      image: quizImage,
+      date: "02/03/2024",
+    },
+    {
+      id: 5,
+      title: "Mastering UI Design for Impactful Solutions",
+      questions: "10",
+      image: quizImage,
+      date: "02/03/2024",
+    },
+    {
+      id: 6,
+      title: "Mastering UI Design for Impactful Solutions",
+      questions: "10",
+      image: quizImage,
+      date: "02/03/2024",
+    },
+
+    {
+      id: 7,
+      title: "Mastering UI Design for Impactful Solutions",
+      questions: "10",
+      image: quizImage,
+      date: "02/03/2024",
+    },
+  ];
   return (
     <div className="App">
       <BrowserRouter>
@@ -81,7 +136,13 @@ function App() {
               />
             </Route>
             <Route path="/courses" element={<Courses />} />
-            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/quiz/" element={<Quiz quizes={quizes} />}>
+              <Route path="" element={<QuizWaiting />} />
+              <Route
+                path="questions/:id"
+                element={<QuizQuestions quizes={quizes} />}
+              />
+            </Route>
             <Route path="/feedback" element={<Feedback />} />
             <Route path="/lesson" element={<Lesson />} />
             <Route path="/questions" element={<Questions />} />
