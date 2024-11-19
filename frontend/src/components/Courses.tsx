@@ -31,6 +31,33 @@ const Courses = () => {
       level: "basic",
       image: figmaImage,
     },
+    {
+      id: 1,
+      title: "Super Creative Background Creation",
+      CreatedAt: "02/04/2024",
+      duration: "20h 10m",
+      price: "$150",
+      level: "expert",
+      image: backgroundImage,
+    },
+    {
+      id: 2,
+      title: "How to master html and css",
+      CreatedAt: "02/03/2024",
+      duration: "20h 10m",
+      price: "$150",
+      level: "basic",
+      image: htmlImage,
+    },
+    {
+      id: 3,
+      title: "Master Design System In Figma",
+      CreatedAt: "02/03/2024",
+      duration: "20h 10m",
+      price: "$150",
+      level: "basic",
+      image: figmaImage,
+    },
   ];
   return (
     <div className="flex flex-col">

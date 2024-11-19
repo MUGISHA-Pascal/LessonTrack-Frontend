@@ -18,7 +18,7 @@ const Quiz: React.FC<childProps> = ({ quizes }) => {
         <h2 className="text-gray-700">Quiz</h2>
       </header>
       <div className="flex flex-row">
-        <menu className="w-[580px] flex flex-col">
+        <menu className="w-[600px] border-r-[1px] border-gray-300 px-[10px] flex flex-col">
           <div className="p-[10px] border-b-[1px] border-gray-300 w-full ">
             <div className="flex flex-row items-center h-[40px] bg-gray-100 px-[10px] space-x-[5px] w-[400px] rounded-[10px]">
               <IoSearch className="text-gray-500" />
@@ -54,7 +54,7 @@ const Quiz: React.FC<childProps> = ({ quizes }) => {
             ))}
           </main>
         </menu>
-        <main>
+        <main className="flex-1">
           <Outlet />
         </main>
       </div>

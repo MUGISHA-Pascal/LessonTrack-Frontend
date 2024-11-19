@@ -13,7 +13,7 @@ import { IoEnter } from "react-icons/io5";
 
 const Home = () => {
   return (
-    <div className="flex flex-row h-screen w-full">
+    <div className="flex flex-row h-full w-full">
       <menu className="flex flex-col space-y-[40px] w-[260px] pt-[30px] text-white bg-blue-500">
         <div className="flex flex-col space-y-[20px] items-left w-full">
           <h2 className="text-[11px] w-[140px]">Main Menu</h2>
@@ -51,13 +51,13 @@ const Home = () => {
               <MdQuiz />
               <p className="text-[14px]">Quiz</p>
             </Link>
-            <Link
+            {/* <Link
               to="/feedback"
               className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
             >
               <MdFeedback />
               <p className="text-[14px]">Feedback</p>
-            </Link>
+            </Link> */}
             <Link
               to="/lesson"
               className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
@@ -65,13 +65,13 @@ const Home = () => {
               <FaLightbulb />
               <p className="text-[14px]">Lesson</p>
             </Link>
-            <Link
+            {/* <Link
               to="/questions"
               className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
             >
               <BsFillQuestionSquareFill />
               <p className="text-[14px]">Questions</p>
-            </Link>
+            </Link> */}
             <Link
               to="/certificates"
               className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
