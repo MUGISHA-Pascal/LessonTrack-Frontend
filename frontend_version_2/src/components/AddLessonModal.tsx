@@ -170,7 +170,7 @@ const AddLessonModal: React.FC<childProps> = ({ setModalShow }) => {
           </div>
           <div className="flex flex-col space-y-[10px] items-start">
             <label htmlFor="file" className="text-gray-700">
-              Upload File
+              Upload Course Profile
             </label>
             <input
               type="file"

@@ -11,9 +11,11 @@ import { FaUserEdit } from "react-icons/fa";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { IoEnter } from "react-icons/io5";
 import { AppContext } from "../API/AppContext";
+import { IoPeople } from "react-icons/io5";
 import Cookies from "js-cookie";
 
 const Home = () => {
+  let parsedUser: any;
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to toggle the sidebar visibility
   function useAppContext() {
@@ -23,7 +25,10 @@ const Home = () => {
     }
     return context;
   }
-
+  const localStorageUser = localStorage.getItem("user");
+  if (localStorageUser) {
+    parsedUser = JSON.parse(localStorageUser);
+  }
   const { jwt, setJwt } = useAppContext();
   const logout = () => {
     Cookies.remove("jwt");
@@ -70,6 +75,15 @@ const Home = () => {
               <MdQuiz />
               <p className="text-[14px]">Tests</p>
             </Link>
+            {parsedUser.user.role === "admin" && (
+              <Link
+                to="/users"
+                className="flex flex-row hover:cursor-pointer space-x-[10px] items-center"
+              >
+                <IoPeople />
+                <p className="text-[14px]">Users</p>
+              </Link>
+            )}
           </div>
         </div>
         <div className="flex flex-col space-y-[20px] w-full">

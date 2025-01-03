@@ -22,7 +22,10 @@ import Cookies from "js-cookie";
 import { AppContext } from "./API/AppContext";
 import QuizForm from "./components/QuizForm";
 import ModuleUpload from "./components/ModuleUpload";
+import Users from "./components/Users";
 function App() {
+  let parsedUser: any;
+
   function useAppContext() {
     const context = useContext(AppContext);
     if (!context) {
@@ -36,7 +39,11 @@ function App() {
   if (token) {
     setJwt(token);
   }
-
+  const localStorageUser = localStorage.getItem("user");
+  if (localStorageUser) {
+    parsedUser = JSON.parse(localStorageUser);
+  }
+  console.log(parsedUser);
   return (
     <div className="App h-screen">
       <BrowserRouter>
@@ -48,7 +55,9 @@ function App() {
                 <Route path="" element={<Dashboard />} />
                 <Route path="/courses" element={<Courses />} />
                 <Route path="/add_module" element={<ModuleUpload />} />
-
+                {parsedUser.user.role === "admin" && (
+                  <Route path="/users" element={<Users />} />
+                )}
                 <Route path="/quiz/" element={<Quiz />}>
                   <Route path="" element={<QuizWaiting />} />
                   <Route path="questions/:id" element={<QuizQuestions />} />

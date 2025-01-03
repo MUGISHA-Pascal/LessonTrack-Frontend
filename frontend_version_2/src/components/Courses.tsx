@@ -106,7 +106,7 @@ const Courses = () => {
       >
         + add Course
       </button>
-      <main className="messageDiv flex flex-col border-t-[1px] mt-[30px] border-gray-300 shadow-md  h-[430px] overflow-y-auto">
+      <main className="messageDiv flex flex-col border-t-[1px] mt-[30px] border-gray-300   h-[430px] overflow-y-auto">
         <h2 className="text-[20px] font-bold my-[15px] text-blue-500">
           CURRENT COURSES
         </h2>
@@ -164,7 +164,7 @@ const Courses = () => {
                   >
                     <MdDelete className="text-red-500 text-[20px]" />
                     <span className="text-[14px] font-semibold text-red-500">
-                      Delete Modules
+                      Delete Course
                     </span>
                   </button>
                   {modalShow3 && (
