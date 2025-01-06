@@ -23,6 +23,10 @@ import { AppContext } from "./API/AppContext";
 import QuizForm from "./components/QuizForm";
 import ModuleUpload from "./components/ModuleUpload";
 import Users from "./components/Users";
+import ModulesView from "./components/ModulesView";
+import ViewQuestions from "./components/ViewQuestions";
+import EmailVerify from "./components/EmailVerify";
+import ModulesUpdate from "./components/ModulesUpdate";
 function App() {
   let parsedUser: any;
 
@@ -55,6 +59,15 @@ function App() {
                 <Route path="" element={<Dashboard />} />
                 <Route path="/courses" element={<Courses />} />
                 <Route path="/add_module" element={<ModuleUpload />} />
+
+                <Route
+                  path="/view_module/:courseId/:courseName"
+                  element={<ModulesView />}
+                />
+                <Route
+                  path="/update_module/:courseId/:courseName"
+                  element={<ModulesUpdate />}
+                />
                 {parsedUser.user.role === "admin" && (
                   <Route path="/users" element={<Users />} />
                 )}
@@ -62,6 +75,10 @@ function App() {
                   <Route path="" element={<QuizWaiting />} />
                   <Route path="questions/:id" element={<QuizQuestions />} />
                 </Route>
+                <Route
+                  path="/view_questions/:quizId/:quizTitle"
+                  element={<ViewQuestions />}
+                />
 
                 <Route path="/QuizForm" element={<QuizForm adminId={1} />} />
                 <Route path="/questions" element={<Questions />} />
@@ -73,6 +90,7 @@ function App() {
           )}
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/signup" element={<Signup />} />
+          <Route path="/auth/verify_email/:token" element={<EmailVerify />} />
         </Routes>
       </BrowserRouter>
     </div>

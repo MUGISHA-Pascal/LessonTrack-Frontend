@@ -50,7 +50,7 @@ const Signup: React.FC = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await fetch("http://localhost:4000/auth/signup", {
+      const response = await fetch("http://localhost:4000/auth/web_signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const Signup: React.FC = () => {
           role: "",
         });
 
-        navigate("/auth/login");
+        alert("please verify your email");
       } else {
         console.error("Signup failed");
       }

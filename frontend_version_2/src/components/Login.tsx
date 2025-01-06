@@ -36,11 +36,20 @@ const Login = () => {
       }
 
       const data = await response.json();
-      Cookies.set("jwt", data.user.token, {
-        expires: 1,
-      });
-      const token = Cookies.get("jwt");
-      if (token) {
+      let verifyCheck: string;
+      verifyCheck = data.user.verified;
+      if (verifyCheck.toLowerCase() === "no") {
+        alert("you are not verified , please verify");
+      }
+      let token;
+      console.log(data);
+      if (data.user.verified === "yes") {
+        Cookies.set("jwt", data.user.token, {
+          expires: 1,
+        });
+        token = Cookies.get("jwt");
+      }
+      if (token && data.user.verified === "yes") {
         const user = data.user;
         localStorage.setItem("user", JSON.stringify({ user }));
         setJwt(token);

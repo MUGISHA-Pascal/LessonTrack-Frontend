@@ -8,6 +8,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import notfound from "../assets/search.png";
 import Cookies from "js-cookie";
 import tubeSinner from "../assets/tube-spinner.svg";
+import { FaRegEye } from "react-icons/fa";
 interface Quiz {
   id: number;
   course_id: number;
@@ -90,11 +91,19 @@ const Quiz: React.FC = () => {
       </Link>
       <main className="flex flex-col border-t-[1px] mt-[20px] border-gray-300 shadow-md h-[430px] max-md:w-full">
         {quizzes.length === 0 ? (
-          <div className="w-full flex mt-[50px] flex-row items-center justify-center">
-            <img src={notfound} className="w-auto h-[270px]" alt="not found" />
-          </div>
+          <>
+            <div className="w-full  flex mt-[50px] flex-col space-y-[20px] items-center justify-center">
+              <img
+                src={notfound}
+                className="w-auto h-[270px]"
+                alt="not found"
+              />
+
+              <h2 className="text-[25px] font-bold text-gray-700">No Tests</h2>
+            </div>
+          </>
         ) : (
-          <table className=" max-md:text-[11px] md:w-[800px] mt-[30px] md:m-[20px] border-collapse border border-gray-200">
+          <table className=" max-md:text-[11px] md:w-[1000px] mt-[30px] md:m-[20px] border-collapse border border-gray-200">
             <thead>
               <tr className="bg-gray-100">
                 <th className="border border-gray-200 px-4 py-2  text-gray-700 text-left">
@@ -137,6 +146,14 @@ const Quiz: React.FC = () => {
                       <MdSystemUpdateAlt className="text-[18px] font-bold" />
                       <span>Edit</span>
                     </button>
+                    <Link
+                      to={`/view_questions/${quiz.id}/${quiz.title}`}
+                      className="text-blue-500 flex flex-row items-center space-x-[10px] font-semibold justify-center hover:cursor-pointer text-[15px]"
+                    >
+                      {" "}
+                      <FaRegEye className="text-[18px] font-bold" />
+                      <span>View Questions</span>
+                    </Link>
                     {modalShow && (
                       <AddQuizModal
                         setShowModal={setShowModal}

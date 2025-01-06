@@ -11,7 +11,6 @@ const Profile = () => {
 
   const [file, setFile] = useState<File | null>(null);
 
-  // Load user from local storage
   useEffect(() => {
     const localStorageUser = localStorage.getItem("user");
     if (localStorageUser) {
@@ -23,22 +22,19 @@ const Profile = () => {
         image: parsedUser.user.profilepicture,
       });
     }
-  }, []); // Runs once when the component mounts
+  }, []);
 
-  // Handle user input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setUser((prevState) => ({ ...prevState, [id]: value }));
   };
 
-  // Handle file change
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0]);
     }
   };
 
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData();
@@ -64,7 +60,6 @@ const Profile = () => {
 
       alert("Updated user profile");
 
-      // Fetch the updated user data
       const updatedUserResponse = await axios.get(
         `http://localhost:4000/user/get_user/${parsedUser.user.id}`
       );
